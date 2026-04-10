@@ -1,0 +1,174 @@
+/* Import clean fonts */
+@import "@fontsource/poppins"; 
+@import "@fontsource/roboto";
+
+:root {
+  --bg-color: #f4f8fb;       /* Soft blue-white */
+  --card-bg: #ffffff;
+  --primary: #4A90E2;        /* Calming Blue */
+  --text-dark: #2c3e50;      /* High contrast dark grey */
+  --text-light: #7f8c8d;
+  --alert: #e74c3c;          /* Emergency Red */
+  --warmth: #f1c40f;         /* Memory/Nostalgia Yellow */
+  --shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff; /* Soft 3D shadow */
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  margin: 0;
+  padding-bottom: 100px; /* Space for fixed buttons */
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Headers */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 30px;
+}
+
+/* 1. The Polaroid Memory Card */
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.memory-card {
+  background: var(--card-bg);
+  padding: 15px;
+  padding-bottom: 40px; /* Polaroid bottom space */
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+  transform: rotate(-1deg); /* Slight tilt for realism */
+  cursor: pointer;
+}
+
+.memory-card:hover {
+  transform: scale(1.02) rotate(0deg);
+  z-index: 10;
+}
+
+.memory-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+.memory-title {
+  font-family: 'Nothing You Could Do', cursive, sans-serif; /* Handwriting style */
+  font-size: 1.5rem;
+  margin-top: 15px;
+  text-align: center;
+  color: #333;
+}
+
+.memory-tags {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tag {
+  background: var(--bg-color);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+/* 2. The Voice Search Pulse */
+.voice-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.mic-button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mic-button.listening {
+  background: var(--alert);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+  70% { box-shadow: 0 0 0 20px rgba(231, 76, 60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+}
+
+/* 3. The Emergency Bar */
+.emergency-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  border-top: 4px solid var(--alert);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.sos-btn {
+  background: var(--alert);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* Spinner Animation for PatientPhotoUpload */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
